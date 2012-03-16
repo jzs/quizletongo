@@ -2,6 +2,7 @@ package quizongo
 
 import (
 	"strings"
+	"errors"
 )
 
 func (session Session) User(username string) (output *User, error error) {
@@ -36,5 +37,15 @@ func (session Session) UserStudied(username string) (output *[]StudiedSession, e
 	output = new([]StudiedSession)
 	request_path := strings.Join([]string{"users", username, "studied"}, "/")
 	error = session.get(request_path, nil, output)
+	return
+}
+
+func (session Session) MarkSetFavorite(setid int64) (error error) {
+	error = errors.New("MarkSetFavorite not implemented yet.")
+	return
+}
+
+func (session Session) UnmarkSetFavorite(setid int64) (error error) {
+	error = errors.New("UnmarkSetFavorite not implemented yet.")
 	return
 }
