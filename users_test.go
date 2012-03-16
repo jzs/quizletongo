@@ -41,10 +41,10 @@ func TestUsername(t *testing.T) {
 func TestUserSets(t *testing.T) {
 	dummy_server := returnDummyResponseForPath("/2.0/users/catchdave/sets", dummyUserSetsResponse, t)
 	defer closeDummyServer(dummy_server)
-	
+
 	session := NewSession("apikey")
 	sets, err := session.UserSets("catchdave", nil)
-	
+
 	if err != nil {
 		t.Error(err.Error())
 	}

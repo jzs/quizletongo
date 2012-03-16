@@ -66,16 +66,16 @@ func parseResponse(response *http.Response, result interface{}) (error error) {
 		return
 	}
 
+	if response.StatusCode >= 400 && response.StatusCode <= 500 {
+		error = errors.New("Bad Request")
+		return
+	}
+
 	//parse JSON
 	error = json.Unmarshal(bytes, result)
 
 	if error != nil {
 		print(error.Error())
-	}
-
-	//check whether the response is a bad request
-	if response.StatusCode == 400 {
-		error = errors.New("Bad Request")
 	}
 
 	return
@@ -89,6 +89,30 @@ func (session Session) get(section string, params map[string]string, collection 
 	return get(section, params, collection)
 }
 
+func (session Session) put(section string, params map[string]string, collection interface{}) (error error) {
+	if params == nil {
+		params = map[string]string{}
+	}
+	params["client_id"] = session.Apikey
+	return put(section, params, collection)
+}
+
+func (session Session) post(section string, params map[string]string, collection interface{}) (error error) {
+	if params == nil {
+		params = map[string]string{}
+	}
+	params["client_id"] = session.Apikey
+	return post(section, params, collection)
+}
+
+func (session Session) delete(section string, params map[string]string) (error error) {
+	if params == nil {
+		params = map[string]string{}
+	}
+	params["client_id"] = session.Apikey
+	return delete(section, params)
+}
+
 func get(section string, params map[string]string, collection interface{}) (error error) {
 	client := &http.Client{Transport: getTransport()}
 
@@ -99,6 +123,47 @@ func get(section string, params map[string]string, collection interface{}) (erro
 	}
 
 	error = parseResponse(response, collection)
+
+	return
+}
+
+
+func put(section string, params map[string]string, collection interface{}) (error error) {
+	client := &http.Client{Transport: getTransport()}
+
+	request, error := http.NewRequest("PUT", setupEndpoint(section, params).String(), nil)
+	response, error := client.Do(request)
+
+	if error != nil {
+		return
+	}
+
+	error = parseResponse(response, collection)
+
+	return
+}
+
+func post(section string, params map[string]string, collection interface{}) (error error) {
+	//client := &http.Client{Transport: getTransport()}
+
+	//response, error := client.PostForm(setupEndpoint(section, params).String())
+	return
+}
+
+func delete(section string, params map[string]string) (error error) {
+	client := &http.Client{Transport: getTransport()}
+
+	request, error := http.NewRequest("DELETE", setupEndpoint(section, params).String(), nil)
+	response, error := client.Do(request)
+
+	if error != nil {
+		return
+	}
+
+	if response.StatusCode != 204 {
+		error = errors.New("Delete failed")
+		return
+	}
 
 	return
 }

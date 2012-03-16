@@ -65,3 +65,9 @@ type StudiedSession struct {
 	Formatted_score string
 	Set Set
 }
+
+type SetSuccess struct {
+	Url string
+	Term_count int
+	Set_id int64
+}
