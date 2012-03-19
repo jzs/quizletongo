@@ -19,10 +19,10 @@ type AccessToken struct {
 	User_id string
 }
 
-var auth_url = "https://quizlet.com/oauth/token"
+var auth_url = "https://api.quizlet.com/oauth/token/"
 
 func AuthURL(client_id, redirect_uri string, options map[string]string) (output string) {
-	auth_url, _ := url.Parse("https://quizlet.com/authorize")
+	auth_url, _ := url.Parse("https://quizlet.com/authorize/")
 	auth_query := auth_url.Query()
 	auth_query.Add("client_id", client_id)
 	auth_query.Add("redirect_uri", redirect_uri)
