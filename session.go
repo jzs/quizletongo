@@ -14,11 +14,11 @@ var transport http.RoundTripper
 var UseSSL bool = true
 
 type Session struct {
-	Apikey string
+	apikey string
 }
 
 func NewSession(apikey string) *Session {
-	return &Session{Apikey: apikey}
+	return &Session{apikey: apikey}
 }
 
 func getTransport() http.RoundTripper {
@@ -85,7 +85,7 @@ func (session Session) get(section string, params map[string]string, collection 
 	if params == nil {
 		params = map[string]string{}
 	}
-	params["client_id"] = session.Apikey
+	params["client_id"] = session.apikey
 	return get(section, params, collection)
 }
 
@@ -93,7 +93,7 @@ func (session Session) put(section string, params map[string]string, collection 
 	if params == nil {
 		params = map[string]string{}
 	}
-	params["client_id"] = session.Apikey
+	params["client_id"] = session.apikey
 	return put(section, params, collection)
 }
 
@@ -101,7 +101,7 @@ func (session Session) post(section string, params map[string]string, collection
 	if params == nil {
 		params = map[string]string{}
 	}
-	params["client_id"] = session.Apikey
+	params["client_id"] = session.apikey
 	return post(section, params, collection)
 }
 
@@ -109,7 +109,7 @@ func (session Session) delete(section string, params map[string]string) (error e
 	if params == nil {
 		params = map[string]string{}
 	}
-	params["client_id"] = session.Apikey
+	params["client_id"] = session.apikey
 	return delete(section, params)
 }
 

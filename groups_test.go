@@ -32,8 +32,38 @@ func TestGroupSets(t *testing.T) {
 		t.Error("sets is nil")
 		return
 	}
-	
 }
+
+/*
+func TestAddGroup(t *testing.T) {
+	return
+}
+
+func TestEditGroup(t *testing.T) {
+	return
+}
+
+func TestDeleteGroup(t *testing.T) {
+	return
+}
+
+func TestJoinGroup(t *testing.T) {
+	return
+}
+
+func TestLeaveGroup(t *testing.T) {
+	return
+}
+
+func TestAddSetToGroup(t *testing.T) {
+	return
+}
+
+func TestRemoveSetFromGroup(t *testing.T) {
+	return
+}
+*/
+
 
 var dummyGroupSetsResponse = `
 [

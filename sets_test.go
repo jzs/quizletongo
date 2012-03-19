@@ -69,6 +69,15 @@ func TestSetTerms(t *testing.T) {
 	}
 }
 
+/*
+func TestAddSet(t *testing.T) {}
+func TestEditSet(t *testing.T) {}
+func TestDeleteSet(t *testing.T) {}
+func TestAddTerm(t *testing.T) {}
+func TestEditTerm(t *testing.T) {}
+func TestDeleteTerm(t *testing.T) {}
+*/
+
 var dummyTermsResponse = `
 [
   {
