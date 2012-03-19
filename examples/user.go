@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"quiz-on-go"
+	"bitbucket.org/jzs/quizletongo"
 )
 
 func main() {
