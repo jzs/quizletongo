@@ -9,7 +9,7 @@ func TestSets(t *testing.T) {
 	defer closeDummyServer(dummy_server)
 
 	session := NewSession("apikey")
-	sets, err := session.Sets(nil, 415,6009523)
+	sets, err := session.Sets(nil, 415, 6009523)
 	if err != nil {
 		t.Error(err.Error())
 	}
@@ -39,7 +39,6 @@ func TestSet(t *testing.T) {
 		t.Error("Set Id does not match.")
 	}
 
-
 }
 
 func TestSetTerms(t *testing.T) {
@@ -55,7 +54,7 @@ func TestSetTerms(t *testing.T) {
 		t.Error("set is nil")
 		return
 	}
-	if len(*terms) != 1{
+	if len(*terms) != 1 {
 		t.Error("Term length is wrong.")
 	}
 	if (*terms)[0].Id != 15407 {

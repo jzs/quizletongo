@@ -64,7 +64,6 @@ func TestRemoveSetFromGroup(t *testing.T) {
 }
 */
 
-
 var dummyGroupSetsResponse = `
 [
     {
