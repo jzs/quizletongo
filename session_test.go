@@ -1,11 +1,11 @@
 package quizongo
 
 import (
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
 	"testing"
-	"fmt"
 )
 
 func closeDummyServer(dummy_server *httptest.Server) {
@@ -31,7 +31,7 @@ func returnDummyResponseForPath(path string, dummy_response string, t *testing.T
 
 	return createDummyServer(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != path {
-		fmt.Printf("path: %v", r.URL.Path)
+			fmt.Printf("path: %v", r.URL.Path)
 			t.Error("Path doesn't match")
 		}
 		w.Write(dummy_data)

@@ -1,11 +1,11 @@
 package quizongo
 
 import (
-	"net/http"
-	"net/url"
+	"encoding/json"
 	"errors"
 	"io/ioutil"
-	"encoding/json"
+	"net/http"
+	"net/url"
 )
 
 var host string = "https://api.quizlet.com"
@@ -126,7 +126,6 @@ func get(section string, params map[string]string, collection interface{}) (erro
 
 	return
 }
-
 
 func put(section string, params map[string]string, collection interface{}) (error error) {
 	client := &http.Client{Transport: getTransport()}

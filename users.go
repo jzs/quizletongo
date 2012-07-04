@@ -1,8 +1,8 @@
 package quizongo
 
 import (
-	"strings"
 	"errors"
+	"strings"
 )
 
 func (session Session) User(username string) (output *User, error error) {

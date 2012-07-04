@@ -5,9 +5,9 @@ import (
 )
 
 type QuizletError struct {
-	http_code int
-	error string
-	error_title string
+	http_code         int
+	error             string
+	error_title       string
 	error_description string
 }
 

@@ -13,10 +13,10 @@ type authError struct {
 
 type AccessToken struct {
 	Access_token string
-	Token_type string
-	Expires_in int
-	Scope string
-	User_id string
+	Token_type   string
+	Expires_in   int
+	Scope        string
+	User_id      string
 }
 
 var auth_url = "https://api.quizlet.com/oauth/token/"
